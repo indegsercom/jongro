@@ -33,6 +33,6 @@ jobs:
           node scripts/create-now-json.js
           ./node_modules/.bin/now --prod --token $NOW_TOKEN
         env:
-          NOW_NAME: sejong-edge
+          NOW_NAME: jongro-edge
           NOW_TOKEN: ${{ secrets.NOW_TOKEN }}
           DATABASE_URL: ${{ secrets.EDGE_DB }}
