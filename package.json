@@ -7,7 +7,7 @@
     "dev": "next dev -p 3031",
     "build": "next build",
     "start": "next start",
-    "knex": "export $(cat .env | xargs) && knex --client pg --connection $DATABASE_URL --migrations-directory migrations"
+    "knex": "knex --migrations-directory migrations"
   },
   "repository": {
     "type": "git",
