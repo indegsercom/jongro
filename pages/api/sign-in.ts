@@ -2,8 +2,9 @@ import cookie from 'cookie'
 import createHttpError from 'http-errors'
 import { verifyIdToken } from 'lib/admin'
 import config from 'lib/config'
+import middy from 'lib/middy'
 
-export default async (req, res) => {
+const handler = async (req, res) => {
   const { token } = req.body
 
   try {
@@ -22,6 +23,7 @@ export default async (req, res) => {
     })
   )
 
-  res.setHeader('Access-Control-Allow-Credentials', 'true')
   res.end()
 }
+
+export default middy()(handler)
