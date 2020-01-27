@@ -1,7 +1,7 @@
-import cookie from 'cookie'
 import { NextApiResponse } from 'next'
+import { signOut } from 'lib/admin'
 
 export default async (req, res: NextApiResponse) => {
-  res.setHeader('Set-Cookie', cookie.serialize('token', ''))
+  signOut(res)
   res.end()
 }

@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next'
-import { verifyIdToken } from 'lib/admin'
+import { verifyIdToken, signOut } from 'lib/admin'
 import config from 'lib/config'
 import middy from 'lib/middy'
 
@@ -18,7 +18,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         email: decoded.email,
       }
     } catch (err) {
-      console.log(err)
+      signOut(res)
     }
   }
 
