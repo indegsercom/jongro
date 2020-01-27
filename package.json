@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "next dev -p 3031",
+    "dev": "nodemon -w dev-server.js dev-server.js",
     "build": "next build",
     "start": "next start"
   },
@@ -23,10 +23,13 @@
     "cookie": "^0.4.0",
     "dotenv": "^8.2.0",
     "firebase-admin": "^8.9.2",
+    "http-errors": "^1.7.3",
+    "micro-cors": "^0.1.1",
     "react": "^16.12.0",
     "react-dom": "^16.12.0"
   },
   "devDependencies": {
+    "@types/http-errors": "^1.6.3",
     "@types/node": "^13.5.0",
     "@types/react": "^16.9.19",
     "next": "^9.2.1",
