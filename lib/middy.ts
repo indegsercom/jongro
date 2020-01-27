@@ -5,7 +5,7 @@ const defaultCorsConfig = req => ({
   origin: req.headers['origin'],
 })
 
-const preflight = (req, res) => {
+const preflight = (req, res: NextApiResponse) => {
   if (req.method === 'OPTIONS') {
     res.end()
   }
@@ -15,10 +15,10 @@ const middy = () => (...handlers) => async (
   req: NextApiRequest,
   res: NextApiResponse
 ) => {
-  const middlewares = [...handlers, preflight, cors(defaultCorsConfig(req))]
+  const middlewares = [cors(defaultCorsConfig(req))(preflight), ...handlers]
 
   for (const middleware of middlewares) {
-    if (res.headersSent) {
+    if (res.headersSent || res.finished) {
       break
     }
     await middleware(req, res)
