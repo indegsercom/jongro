@@ -22,12 +22,10 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 10.x
-      - name: Migrate
-        run: |
-          npm install
-          npm run knex -- migrate:latest 
+      - name: Decrypt secrets
+        run: ./scripts/decrypt_secret.sh
         env:
-          DATABASE_URL: ${{ secrets.EDGE_DB }}
+          GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
       - name: Deploy
         run: |
           node scripts/create-now-json.js
@@ -35,4 +33,3 @@ jobs:
         env:
           NOW_NAME: jongro-edge
           NOW_TOKEN: ${{ secrets.NOW_TOKEN }}
-          DATABASE_URL: ${{ secrets.EDGE_DB }}
