@@ -1,8 +1,9 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 import { verifyIdToken } from 'lib/admin'
 import config from 'lib/config'
+import middy from 'lib/middy'
 
-export default async (req: NextApiRequest, res: NextApiResponse) => {
+const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const token = req.cookies[config.TOKEN_COOKIE_NAME]
 
   let currentUser = null
@@ -23,3 +24,5 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
   res.json({ currentUser })
 }
+
+export default middy()(handler)
