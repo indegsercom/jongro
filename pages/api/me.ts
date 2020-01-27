@@ -1,8 +1,9 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 import { verifyIdToken } from 'lib/admin'
+import config from 'lib/config'
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
-  const { token } = req.cookies
+  const token = req.cookies[config.TOKEN_COOKIE_NAME]
 
   let currentUser = null
   if (token) {

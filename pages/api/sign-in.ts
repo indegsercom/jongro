@@ -1,6 +1,7 @@
 import cookie from 'cookie'
 import createHttpError from 'http-errors'
 import { verifyIdToken } from 'lib/admin'
+import config from 'lib/config'
 
 export default async (req, res) => {
   const { token } = req.body
@@ -13,7 +14,7 @@ export default async (req, res) => {
 
   res.setHeader(
     'Set-Cookie',
-    cookie.serialize('IDG', token, {
+    cookie.serialize(config.TOKEN_COOKIE_NAME, token, {
       path: '/',
       maxAge: 360000,
       httpOnly: true,
