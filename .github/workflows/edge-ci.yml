@@ -26,8 +26,9 @@ jobs:
         run: ./scripts/decrypt_secret.sh
         env:
           GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
-      - name: Deploy
+      - name: Install and deploy
         run: |
+          npm install
           node scripts/create-now-json.js
           ./node_modules/.bin/now --prod --token $NOW_TOKEN
         env:
