@@ -2,6 +2,7 @@ on:
   push:
     branches:
       - master
+      - develop
 
 name: Production CI
 jobs:
@@ -22,17 +23,8 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 10.x
-      - name: Migrate
-        run: |
-          npm install
-          npm run knex -- migrate:latest
-        env:
-          DATABASE_URL: ${{ secrets.PROD_DB }}
       - name: Deploy
         run: |
-          node scripts/create-now-json.js
           ./node_modules/.bin/now --prod --token $NOW_TOKEN
         env:
-          NOW_NAME: jongro
           NOW_TOKEN: ${{ secrets.NOW_TOKEN }}
-          DATABASE_URL: ${{ secrets.PROD_DB }}

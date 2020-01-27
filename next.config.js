@@ -1,7 +1,11 @@
+const path = require('path')
+
 module.exports = {
   webpack: (config, { webpack }) => {
-    // Note: we provide webpack above so you should not `require` it
-    config.plugins.push(new webpack.IgnorePlugin(/pg-native/, /\/pg\//))
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      lib: path.resolve(__dirname, 'lib'),
+    }
     return config
   },
 }

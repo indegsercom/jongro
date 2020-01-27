@@ -6,8 +6,7 @@
   "scripts": {
     "dev": "next dev -p 3031",
     "build": "next build",
-    "start": "next start",
-    "knex": "knex --migrations-directory migrations"
+    "start": "next start"
   },
   "repository": {
     "type": "git",
@@ -21,17 +20,18 @@
   },
   "homepage": "https://github.com/indegsercom/jongro#readme",
   "dependencies": {
+    "cookie": "^0.4.0",
     "dotenv": "^8.2.0",
-    "knex": "^0.20.8",
-    "pg": "^7.17.1",
+    "firebase-admin": "^8.9.2",
     "react": "^16.12.0",
     "react-dom": "^16.12.0"
   },
   "devDependencies": {
-    "db-migrate": "^0.11.6",
-    "db-migrate-pg": "^1.0.0",
+    "@types/node": "^13.5.0",
+    "@types/react": "^16.9.19",
     "next": "^9.2.1",
-    "now": "^16.7.3"
+    "now": "^16.7.3",
+    "typescript": "^3.7.5"
   },
   "prettier": {
     "trailingComma": "es5",
