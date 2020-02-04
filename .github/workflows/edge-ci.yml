@@ -23,7 +23,7 @@ jobs:
         with:
           node-version: 10.x
       - name: Decrypt secrets
-        run: ./scripts/decrypt_secret.sh && ls
+        run: ./scripts/decrypt_secret.sh
         env:
           GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
       - name: Install and deploy
